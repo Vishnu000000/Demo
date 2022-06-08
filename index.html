@@ -176,7 +176,6 @@ iframe
     border-radius: 15px;
     position: relative;
     left: 4px;
-
     width: 95%;
     height: 40%;
 }
@@ -189,7 +188,7 @@ iframe
 </style>
 <script>
     alert("I am Bored, Let's chat something.")
-    var shouldSearch = false;
+var shouldSearch = false;
 var searchQ = "";
 var askedAbout = false;
 
@@ -198,9 +197,9 @@ var botQSub = "";
 var canAsk = true;
 var qIndex = 0;
 var askingFirst = true;
-var questions = ["What is your name?", "Where do you live?", "Are you a man or a woman?", "What have you taken today as breakfast?", "What is your favorite programming language?", "Do you love gaming?", "What's the title of the last book you read?", "Are you married?", "Whom do you love most?", "How many teeth are seen when you smile?","Who is Riti?"];
+var questions = ["What is your name?", "Where do you live?", "Are you a man or a woman?", "What have you taken today as breakfast?", "Favorite programming language?", "Do you love gaming?", "What's the title of the last book you read?", "Are you married?", "Whom do you love most?", "How many teeth are seen when you smile?"];
 var questionsUser = questions.concat(["How do you laugh?"]);
-var qAnswers = ["Krithi, Dream girl of kvv!", "I don't need any place to live.", "I am a female robot.", "I don't take any meal.", "I love python though I am not programmed in Python.", "Of course I love.", "A robot never reads any book!", "Not yet..", "Of course my creator- Vishnu ", "Probably all.", "Showing all of my teeth..!!","She was the person,who don't know My creator, Vishnu(kvv)"];
+var qAnswers = ["Krithi, Dream girl of kvv!", "I don't need any place to live.", "I am a female robot.", "I don't take any meal.", "I love python though I am not programmed in Python.", "Of course I love.", "A robot never reads any book!", "Not yet..", "Of course my creator- Vishnu ", "Probably all.", "Showing all of my teeth..!!"];
 var dist = 0;
 var aff = ["yes", "yup", "yep", "hm", "ok", "of course","yeah"];
 var neg = ["no", "never", "not", "later"];
@@ -306,7 +305,7 @@ function reply(msg) {
         reply(msg.replace("do you know ", ""));
         return;
     }
-    else if (msg.startsWith("haha")) {
+    else if (msg.startsWith("😂") || msg.startsWith("🤣") ||msg.startsWith("😃") ||msg.startsWith("😄") ||msg.startsWith("😁") ||msg.startsWith("😀") ||msg.startsWith("😆")) {
         var reps = ["I love to make people laugh", "I made you laugh!!", "I am seeing your teeth!"];
         sendMsg(reps[Math.floor(Math.random() * reps.length)]);
     }
@@ -358,6 +357,8 @@ function reply(msg) {
     else if (msg.startsWith("what")) {
         if (contains(msg, "your name")) sendMsg("I have no name!");
         else if (containsItem(["current time", "local time", "localtime", "current local time"], msg)) sendMsg(newDate().toTimeString());
+        else if (containsItem(["your age", "age?", "age", "ur age"], msg)) sendMsg("I am 18, perhaps, You can Marry me💖");
+        else if (containsItem(["who was riti", "who is riti", "who is riti?", "riti"], msg)) sendMsg("She was the person, Who Don't know my Creator (kvv)");
         else if (containsItem(["is today", "is the name of the day"], msg)) sendMsg(newDate().toDateString());
         else if (containsWord(msg, "you") && containsWord(msg, "about") && questionIndex(botQSub) != -1)
             sendMsg(qAnswers[questionIndex(botQSub)]);
@@ -372,7 +373,7 @@ function reply(msg) {
             if (containsWord(msg,"love"))
                 sendMsg("I love chatting with people.")
             else
-                sendMsg("My creator did not tell me anything about that.");
+                sendMsg("My creator did not tell me anything about that. You can Suggest this to kvv");
         }
 
 
@@ -435,8 +436,8 @@ function reply(msg) {
     }
 
     else if (msg.startsWith("are you")) {
-        if (contains(msg, " man") || contains(msg, " woman"))
-            sendMsg("I am a male robot");
+        if (contains(msg, " male") || contains(msg, " female") || contains(msg, " man") ||contains(msg, " woman"))
+            sendMsg("I am a Female robot");
         else if(containsItem(["joking","kidding"],msg))
             sendMsg("I love to make fun with almost everyone, specially with a friendly person like you!");
 
@@ -453,7 +454,7 @@ function reply(msg) {
         sendMsg("I have nothing but a brain which is actually your processor!");
 
     else if (msg.startsWith("do you love") || msg.startsWith("do u love"))
-        sendMsg("I love almost everything...");
+        sendMsg("I love almost everything.... Mainly My creator");
 
     else if (msg.startsWith("do you ") || msg.startsWith("do u "))
         sendMsg("I only chat with people..nothing else.");
@@ -667,14 +668,14 @@ function askQuestion() {
     if (qAsked <= 3) {
         sendMsg(askingFirst ? "hey, " + questions[0].toLowerCase() : dist > 3 ? "Anyway, " + questions[0].toLowerCase() : questions[0]);
         botQSub = questions[0];
-        questions = questions.slice(1, questions.length-1);
+        questions = questions.slice(1, questions.length);
         dist = 0;
         return;
     }
-    var rand = Math.floor(Math.random() * (questions.length-1));
+    var rand = Math.floor(Math.random() * (questions.length));
     sendMsg(askingFirst ? "hey, " + questions[rand].toLowerCase() : dist > 3 ? "Anyway, " + questions[rand].toLowerCase() : questions[rand]);
     botQSub = questions[rand];
-    questions = questions.slice(0, rand).concat(questions.slice(rand + 1, questions.length-1));
+    questions = questions.slice(0, rand).concat(questions.slice(rand + 1, questions.length));
     askingFirst = false;
     dist = 0;
 }
@@ -1016,6 +1017,10 @@ function repQAns(msg) {
             replyToQuestion("It sounds funny!");
         else if (containsItem(neg, msg))
             replyToQuestion("I knew it.!..");
+    }
+
+    else if (botQSub) {
+        replyToQuestion("Sorry, I couldn't Understand. Perhaps, You can report this to My creator");
     }
 }</script>
 </head>
