@@ -667,14 +667,14 @@ function askQuestion() {
     if (qAsked <= 3) {
         sendMsg(askingFirst ? "hey, " + questions[0].toLowerCase() : dist > 3 ? "Anyway, " + questions[0].toLowerCase() : questions[0]);
         botQSub = questions[0];
-        questions = questions.slice(1, questions.length);
+        questions = questions.slice(1, questions.length-1);
         dist = 0;
         return;
     }
-    var rand = Math.floor(Math.random() * questions.length);
+    var rand = Math.floor(Math.random() * (questions.length-1));
     sendMsg(askingFirst ? "hey, " + questions[rand].toLowerCase() : dist > 3 ? "Anyway, " + questions[rand].toLowerCase() : questions[rand]);
     botQSub = questions[rand];
-    questions = questions.slice(0, rand).concat(questions.slice(rand + 1, questions.length));
+    questions = questions.slice(0, rand).concat(questions.slice(rand + 1, questions.length-1));
     askingFirst = false;
     dist = 0;
 }
