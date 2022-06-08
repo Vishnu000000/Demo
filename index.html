@@ -6,6 +6,7 @@
     <title>Chat with Bot</title>
     <p style="color:white;text-align:center;">Iamkvv✔️</p>
     <link href="https://chat.marvelpics.org/images/favicon.png" rel="shortcut icon" type="image">
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
     <style>
 
 body
@@ -338,15 +339,6 @@ function reply(msg) {
         else if (!containsItem(["you", " u ", " u?"], msg)) searchOnline(msg);
         else sendMsg("Sorry.Can't get what you meant.");
     }
-
-
-
-
-
-
-
-
-
     else if (msg.startsWith("what")) {
         if (contains(msg, "your name")) sendMsg("I have no name!");
         else if (containsItem(["current time", "local time", "localtime", "current local time"], msg)) sendMsg(newDate().toTimeString());
