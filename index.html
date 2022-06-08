@@ -230,8 +230,8 @@ String.prototype.endsWith=function(arg){
     return true;
 }
 window.onload = function () {
-    document.getElementById("messages").style.height = window.innerHeight - document.getElementById("msg").offsetHeight - 2 + "em";
-    document.getElementById("msg").style.width = window.innerWidth - document.getElementById("sendIcon").offsetWidth - 1.7 + "em";
+    document.getElementById("messages").style.height = window.innerHeight - document.getElementById("msg").offsetHeight - 20 + "px";
+    document.getElementById("msg").style.width = window.innerWidth - document.getElementById("sendIcon").offsetWidth - 32 + "px";
     document.getElementById("msg").addEventListener("keyup", function (e) {
         if (e.keyCode == 13 && this.value != "") {
             send();
@@ -256,8 +256,8 @@ if(window.innerHeight<150)
             document.getElementById("msg").blur();
 }
 window.onresize = function () {
-    document.getElementById("msg").style.width = window.innerWidth - document.getElementById("sendIcon").offsetWidth - 1.7 + "em";
-    document.getElementById("messages").style.height = window.innerHeight - document.getElementById("msg").offsetHeight - 2 + "em";
+    document.getElementById("msg").style.width = window.innerWidth - document.getElementById("sendIcon").offsetWidth - 25 + "px";
+    document.getElementById("messages").style.height = window.innerHeight - document.getElementById("msg").offsetHeight - 32 + "px";
 }
 
 
