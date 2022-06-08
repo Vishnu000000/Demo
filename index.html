@@ -726,7 +726,7 @@ function sendMsg(message, right) {
 }
 ;
 function search(txt, address) {
-    address = address || "http://www.bing.com/search?q=";
+    address = address || "http://www.google.com/search?q=";
     var frame = document.createElement("iframe");
     frame.src = address + txt + "&output=embed";
     document.getElementById("messages").appendChild(frame);
