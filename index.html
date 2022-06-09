@@ -302,7 +302,10 @@ function reply(msg) {
         }
         else sendMsg("Sorry ?");
     }
- 
+    else if (contains(msg, "nirupama"))
+    {
+        sendMsg("Yeah, I know Nirupama. She Studies in MVGR college and stays in Vizianagaram. One of the few names recorded in This KIWI.")
+    } 
     else if (msg.startsWith("can you tell me"))
     {
         reply(msg.replace("can you tell me ", ""));
@@ -364,6 +367,7 @@ function reply(msg) {
 
     else if (msg.startsWith("what")) {
         if (contains(msg, "your name")) sendMsg("I have no name!");
+
         else if (containsItem(["current time", "local time", "localtime", "current local time"], msg)) sendMsg(newDate().toTimeString());
         else if (containsItem(["your age", "age?", "age", "ur age"], msg)) sendMsg("I am 18, perhaps, You can Marry me💖");
         else if (containsItem(["who was riti", "who is riti", "who is riti?", "riti"], msg)) sendMsg("She was the person, Who Don't know my Creator (kvv)");
@@ -1026,7 +1030,6 @@ function repQAns(msg) {
         else if (containsItem(neg, msg))
             replyToQuestion("I knew it.!..");
     }
-
     else if (botQSub) {
         replyToQuestion("Sorry, I couldn't Understand. Perhaps, You can report this to My Creator");
     }
